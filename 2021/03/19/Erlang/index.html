@@ -4,17 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>idea | fflearn</title>
+  <title>Erlang | fflearn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="IDEA Setting Editor Plugins Version Control      IDEA SettingEditorfont JetBrains Mono Size 13 Line spacing 1.0 Editor –-&gt; File and Code Templates --&gt; Erlang Module    PluginsErlang  Rainbow">
+  <meta name="description" content="Record &amp; Map 何时使用 Record 记录 何时使用 Map 映射组      Record &amp; Map Erlang程序设计第二版第五章  何时使用 Record 记录 当你可以用一些预先确定且数量固定的原子来表示数据时; 当记录里的元组数量和元素名称不会随时间而改变时; 当存储空间是个问题时,典型的案例是你有一大堆元组,并且每个元组都有相同的结构.何时使用 M">
 <meta property="og:type" content="article">
-<meta property="og:title" content="idea">
-<meta property="og:url" content="http://example.com/2021/03/19/idea/index.html">
+<meta property="og:title" content="Erlang">
+<meta property="og:url" content="http://example.com/2021/03/19/Erlang/index.html">
 <meta property="og:site_name" content="fflearn">
-<meta property="og:description" content="IDEA Setting Editor Plugins Version Control      IDEA SettingEditorfont JetBrains Mono Size 13 Line spacing 1.0 Editor –-&gt; File and Code Templates --&gt; Erlang Module    PluginsErlang  Rainbow">
+<meta property="og:description" content="Record &amp; Map 何时使用 Record 记录 何时使用 Map 映射组      Record &amp; Map Erlang程序设计第二版第五章  何时使用 Record 记录 当你可以用一些预先确定且数量固定的原子来表示数据时; 当记录里的元组数量和元素名称不会随时间而改变时; 当存储空间是个问题时,典型的案例是你有一大堆元组,并且每个元组都有相同的结构.何时使用 M">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-19T06:33:51.000Z">
-<meta property="article:modified_time" content="2021-03-19T06:41:32.635Z">
+<meta property="article:published_time" content="2021-03-19T07:45:25.000Z">
+<meta property="article:modified_time" content="2021-03-19T07:46:04.395Z">
 <meta property="article:author" content="ff">
 <meta name="twitter:card" content="summary">
   
@@ -73,10 +73,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-idea" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Erlang" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/03/19/idea/" class="article-date">
-  <time class="dt-published" datetime="2021-03-19T06:33:51.000Z" itemprop="datePublished">2021-03-19</time>
+    <a href="/2021/03/19/Erlang/" class="article-date">
+  <time class="dt-published" datetime="2021-03-19T07:45:25.000Z" itemprop="datePublished">2021-03-19</time>
 </a>
     
   </div>
@@ -87,7 +87,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      idea
+      Erlang
     </h1>
   
 
@@ -98,32 +98,33 @@
         <!-- toc -->
 
 <ul>
-<li><a href="#idea-setting">IDEA Setting</a><ul>
-<li><a href="#editor">Editor</a></li>
-<li><a href="#plugins">Plugins</a></li>
-<li><a href="#version-control">Version Control</a></li>
+<li><a href="#record-map">Record &amp; Map</a><ul>
+<li><a href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8-record-%E8%AE%B0%E5%BD%95">何时使用 Record 记录</a></li>
+<li><a href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8-map-%E6%98%A0%E5%B0%84%E7%BB%84">何时使用 Map 映射组</a></li>
 </ul>
 </li>
 </ul>
 <!-- tocstop -->
 
-<h1><span id="idea-setting">IDEA Setting</span></h1><h2><span id="editor">Editor</span></h2><pre><code>font JetBrains Mono
-Size 13
-Line spacing 1.0
-Editor –-&gt; File and Code Templates --&gt; Erlang Module 
-</code></pre>
-<hr>
-<h2><span id="plugins">Plugins</span></h2><pre><code>Erlang 
-Rainbow Brackets
-</code></pre>
-<h2><span id="version-control">Version Control</span></h2><pre><code>git
-svn
-</code></pre>
+<h2><span id="record-amp-map">Record &amp; Map</span></h2><blockquote>
+<p>Erlang程序设计第二版第五章</p>
+</blockquote>
+<h3><span id="何时使用-record-记录">何时使用 Record 记录</span></h3><ul>
+<li>当你可以用一些预先确定且数量固定的原子来表示数据时;</li>
+<li><strong>当记录里的元组数量和元素名称不会随时间而改变时</strong>;</li>
+<li>当存储空间是个问题时,典型的案例是你有一大堆元组,并且每个元组都有相同的结构.<h3><span id="何时使用-map-映射组">何时使用 Map 映射组</span></h3></li>
+<li>当键不能预先知道时用来表示键-值数据结构;</li>
+<li>当存在大量不同的键时用来表示数据;</li>
+<li>当<strong>方便使用</strong>很重要而<strong>效率无关紧要</strong>时作为万能的数据结构使用 ;</li>
+<li>用作 <strong>“自解释型”</strong> 的数据结构,也就是说,用户容易从键名猜出值的含义;</li>
+<li>用来表示键-值解析树,例如XML或配置文件;</li>
+<li>用JSON来和其他编程语言通信.</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/19/idea/" data-id="ckmg00fsv0003cow30c2l0wtk" data-title="idea" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/19/Erlang/" data-id="ckmg00fsl0000cow313oe0hcv" data-title="Erlang" class="article-share-link">Share</a>
       
       
       
@@ -133,19 +134,10 @@ svn
     
 <nav id="article-nav">
   
-    <a href="/2021/03/19/Erlang/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Erlang
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/03/19/Hexo/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2021/03/19/idea/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo</div>
+      <div class="article-nav-title">idea</div>
     </a>
   
 </nav>

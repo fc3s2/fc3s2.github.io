@@ -71,6 +71,69 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Erlang" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/19/Erlang/" class="article-date">
+  <time class="dt-published" datetime="2021-03-19T07:45:25.000Z" itemprop="datePublished">2021-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/19/Erlang/">Erlang</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#record-map">Record &amp; Map</a><ul>
+<li><a href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8-record-%E8%AE%B0%E5%BD%95">何时使用 Record 记录</a></li>
+<li><a href="#%E4%BD%95%E6%97%B6%E4%BD%BF%E7%94%A8-map-%E6%98%A0%E5%B0%84%E7%BB%84">何时使用 Map 映射组</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h2><span id="record-amp-map">Record &amp; Map</span></h2><blockquote>
+<p>Erlang程序设计第二版第五章</p>
+</blockquote>
+<h3><span id="何时使用-record-记录">何时使用 Record 记录</span></h3><ul>
+<li>当你可以用一些预先确定且数量固定的原子来表示数据时;</li>
+<li><strong>当记录里的元组数量和元素名称不会随时间而改变时</strong>;</li>
+<li>当存储空间是个问题时,典型的案例是你有一大堆元组,并且每个元组都有相同的结构.<h3><span id="何时使用-map-映射组">何时使用 Map 映射组</span></h3></li>
+<li>当键不能预先知道时用来表示键-值数据结构;</li>
+<li>当存在大量不同的键时用来表示数据;</li>
+<li>当<strong>方便使用</strong>很重要而<strong>效率无关紧要</strong>时作为万能的数据结构使用 ;</li>
+<li>用作 <strong>“自解释型”</strong> 的数据结构,也就是说,用户容易从键名猜出值的含义;</li>
+<li>用来表示键-值解析树,例如XML或配置文件;</li>
+<li>用JSON来和其他编程语言通信.</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/19/Erlang/" data-id="ckmg00fsl0000cow313oe0hcv" data-title="Erlang" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-idea" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/19/idea/" class="article-date">
@@ -121,7 +184,7 @@ svn
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/19/idea/" data-id="ckmfy7x5000025cw32kwdg1q5" data-title="idea" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/19/idea/" data-id="ckmg00fsv0003cow30c2l0wtk" data-title="idea" class="article-share-link">Share</a>
       
       
       
@@ -212,13 +275,15 @@ hexo deploy  hexo d 注意deploy时可能要你输入username和password
 网络问题可能多次异常
 稍后即可访问 fc3s2.github.io
 </code></pre>
-<h2><span id="6编写内容">6.编写内容</span></h2><h2><span id="7设置域名可选">7.设置域名(可选)</span></h2><pre><code>现在你的个人网站的地址是 yourname.github.io，如果觉得这个网址逼格不太够，这就需要你设置个人域名了。但是需要花钱。
+<h2><span id="6编写内容">6.编写内容</span></h2><pre><code>npm install hexo-toc --save    toc插件
+</code></pre>
+<h2><span id="7设置域名可选">7.设置域名(可选)</span></h2><pre><code>现在你的个人网站的地址是 yourname.github.io，如果觉得这个网址逼格不太够，这就需要你设置个人域名了。但是需要花钱。
 </code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/19/Hexo/" data-id="ckmfy7x4s00005cw3cywvhopv" data-title="Hexo" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/19/Hexo/" data-id="ckmg00fsp0001cow3300ygtof" data-title="Hexo" class="article-share-link">Share</a>
       
       
       
@@ -269,7 +334,7 @@ hexo deploy  hexo d 注意deploy时可能要你输入username和password
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/19/hello-world/" data-id="ckmfy7x4w00015cw34tfbft42" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/19/hello-world/" data-id="ckmg00fsq0002cow37cc8f1r3" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -310,6 +375,10 @@ hexo deploy  hexo d 注意deploy时可能要你输入username和password
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/03/19/Erlang/">Erlang</a>
+          </li>
         
           <li>
             <a href="/2021/03/19/idea/">idea</a>
