@@ -14,7 +14,7 @@
 <meta property="og:description" content="Hexo 1. 安装Git 2. 安装Node.js 3. 安装Hexo 启动   4. 配置GitHub 5. 发布文件到GitHub 6.编写内容 7.设置域名(可选)      1. 安装Git Git  2. 安装Node.js Node  npm -v node -v   3. 安装Hexo新建文件夹,cd 到 新文件夹 npm install -g hexo-cli hexo -">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-19T06:26:25.000Z">
-<meta property="article:modified_time" content="2021-03-19T07:00:12.376Z">
+<meta property="article:modified_time" content="2021-03-22T07:48:17.642Z">
 <meta property="article:author" content="ff">
 <meta name="twitter:card" content="summary">
   
@@ -149,10 +149,11 @@ hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
 hexo clean
 hexo generate  hexo g
 hexo deploy  hexo d 注意deploy时可能要你输入username和password
-网络问题可能多次异常
+网络问题可能多次异常可在_config.yml 改为repo ssh模式
 稍后即可访问 fc3s2.github.io
 </code></pre>
 <h2><span id="6编写内容">6.编写内容</span></h2><pre><code>npm install hexo-toc --save    toc插件
+hexo new *****
 </code></pre>
 <h2><span id="7设置域名可选">7.设置域名(可选)</span></h2><pre><code>现在你的个人网站的地址是 yourname.github.io，如果觉得这个网址逼格不太够，这就需要你设置个人域名了。但是需要花钱。
 </code></pre>
@@ -160,7 +161,7 @@ hexo deploy  hexo d 注意deploy时可能要你输入username和password
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/03/19/Hexo/" data-id="ckmg1lu72000194w31ge3h3dn" data-title="Hexo" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/03/19/Hexo/" data-id="ckmkaevew0001eww3h3c4dsae" data-title="Hexo" class="article-share-link">Share</a>
       
       
       
@@ -218,6 +219,10 @@ hexo deploy  hexo d 注意deploy时可能要你输入username和password
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/03/22/Design-pattern/">Design-pattern</a>
+          </li>
         
           <li>
             <a href="/2021/03/19/Erlang/">Erlang</a>

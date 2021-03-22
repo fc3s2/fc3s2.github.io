@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Design-pattern | ff&#39;s learn book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="设计模式 对比 例子   结尾      设计模式 写Erlang代码一直都是面向过程的方式来设计&#x2F;编码的.本周遇到新要求: 以面向对象的思维来使用Erlang  对比 例子 面向过程–五子棋   123456789101112131415161718192021下五子棋&amp;#123;    开始游戏（）；    黑子先走（）；    绘制画面（）；    判断输赢（）；    轮到白子（）；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Design-pattern">
+<meta property="og:url" content="http://example.com/2021/03/22/Design-pattern/index.html">
+<meta property="og:site_name" content="ff&#39;s learn book">
+<meta property="og:description" content="设计模式 对比 例子   结尾      设计模式 写Erlang代码一直都是面向过程的方式来设计&#x2F;编码的.本周遇到新要求: 以面向对象的思维来使用Erlang  对比 例子 面向过程–五子棋   123456789101112131415161718192021下五子棋&amp;#123;    开始游戏（）；    黑子先走（）；    绘制画面（）；    判断输赢（）；    轮到白子（）；">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://baike.baidu.com/pic/%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/9957246/0/aa64034f78f0f7363f0823df0755b319eac4137d?fr=lemma&ct=single">
+<meta property="article:published_time" content="2021-03-22T06:28:10.000Z">
+<meta property="article:modified_time" content="2021-03-22T07:46:44.775Z">
+<meta property="article:author" content="ff">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://baike.baidu.com/pic/%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/9957246/0/aa64034f78f0f7363f0823df0755b319eac4137d?fr=lemma&ct=single">
+  
+    <link rel="alternate" href="/atom.xml" title="ff's learn book" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ff&#39;s learn book</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Design-pattern" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/22/Design-pattern/" class="article-date">
+  <time class="dt-published" datetime="2021-03-22T06:28:10.000Z" itemprop="datePublished">2021-03-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Design-pattern
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F">设计模式</a><ul>
+<li><a href="#%E5%AF%B9%E6%AF%94">对比</a><ul>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
+</ul>
+</li>
+<li><a href="#%E7%BB%93%E5%B0%BE">结尾</a></li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="设计模式">设计模式</span></h1><blockquote>
+<p>写Erlang代码一直都是<strong>面向过程</strong>的方式来设计/编码的.<br>本周遇到新要求: 以<strong>面向对象</strong>的思维来使用Erlang</p>
+</blockquote>
+<h2><span id="对比">对比</span></h2><p><img src="https://baike.baidu.com/pic/%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/9957246/0/aa64034f78f0f7363f0823df0755b319eac4137d?fr=lemma&ct=single" alt="a"></p>
+<h3><span id="例子">例子</span></h3><ol>
+<li>面向过程–五子棋 </li>
+</ol>
+<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">下五子棋&#123;</span><br><span class="line"></span><br><span class="line">    开始游戏（）；</span><br><span class="line"></span><br><span class="line">    黑子先走（）；</span><br><span class="line"></span><br><span class="line">    绘制画面（）；</span><br><span class="line"></span><br><span class="line">    判断输赢（）；</span><br><span class="line"></span><br><span class="line">    轮到白子（）；</span><br><span class="line"></span><br><span class="line">    绘制画面（）；</span><br><span class="line"></span><br><span class="line">    判断输赢（）；</span><br><span class="line"></span><br><span class="line">    返回到 黑子先走（）；</span><br><span class="line"></span><br><span class="line">    输出最后结果；</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可见，面向过程始终关注的是怎么一步一步地判断棋局输赢的，通过控制代码，从而实现函数的顺序执行。</p>
+<pre><code>面向过程是一种以事件为中心的编程思想，编程的时候把解决问题的步骤分析出来，然后用函数把这些步骤实现，在一步一步的具体步骤中再按顺序调用函数。
+</code></pre>
+<blockquote>
+<p>优点：性能比面向对象高，因为类调用时需要实例化，开销比较大，比较消耗资源;比如单片机、嵌入式开发、 Linux/Unix等一般采用面向过程开发，性能是最重要的因素。<br>    缺点：没有面向对象易维护、易复用、易扩展</p>
+</blockquote>
+<ol start="2">
+<li>面向对象–五子棋<br> 在日常生活或编程中，简单的问题可以用面向过程的思路来解决，直接有效，但是当问题的规模变得更大时，用面向过程的思想是远远不够的。所以慢慢就出现了面向对象的编程思想。世界上有很多人和事物，每一个都可以看做一个对象，而每个对象都有自己的属性和行为，对象与对象之间通过方法来交互。面向对象是一种以“对象”为中心的编程思想，把要解决的问题分解成各个对象，建立对象的目的不是为了完成一个步骤，而是为了描叙某个对象在整个解决问题的步骤中的属性和行为。</li>
+</ol>
+<p>在下五子棋的例子中，用面向对象的方法来解决的话，首先将整个五子棋游戏分为三个对象:</p>
+<p>（1）黑白双方，这两方的行为是一样的。</p>
+<p>（2）棋盘系统，负责绘制画面</p>
+<p>（3）规则系统，负责判定犯规、输赢等。<br>然后赋予每个对象一些属性和行为：</p>
+<p>（4）第一类对象（黑白双方）负责接受用户输入，并告知第二类对象（棋盘系统）棋子布局的变化，棋盘系统接收到了棋子的变化，并负责在屏幕上面显示出这种变化，同时利用第三类对象（规则系统）来对棋局进行判定。</p>
+<p>可以看出，面向对象是以功能来划分问题，而不是以步骤解决。比如绘制画面这个行为，在面向过程中是分散在了多个步骤中的，可能会出现不同的绘制版本，所以要考虑到实际情况进行各种各样的简化。而面向对象的设计中，绘图只可能在棋盘系统这个对象中出现，从而保证了绘图的统一。</p>
+<blockquote>
+<p>优点：易维护、易复用、易扩展，由于面向对象有封装、继承、多态性的特性，可以设计出低耦合的系统，使系统 更加灵活、更加易于维护.<br>    缺点：<del>性能比面向过程低</del> (目前阶段等于没有)</p>
+</blockquote>
+<p>![]<a target="_blank" rel="noopener" href="https://baike.baidu.com/pic/%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/9957246/0/aa64034f78f0f7363f0823df0755b319eac4137d?fr=lemma&amp;ct=single">https://baike.baidu.com/pic/%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B/9957246/0/aa64034f78f0f7363f0823df0755b319eac4137d?fr=lemma&amp;ct=single</a></p>
+<h2><span id="结尾">结尾</span></h2><pre><code>举例说明两者的优缺点，比如在五子棋游戏中增加悔棋的功能。
+在面向过程中，从输入到显示再到最后判断的整个步骤都要改动，甚至函数的调用顺序也要改动，而在面向对象的设计中，只需在棋盘系统中增加一个回溯的功能就可以了，黑白双方和规则系统的属性和行为都不需改动。这个例子说明了面向对象程序设计中代码间的相关性低（低耦合特性），使得代码很容易被复用和扩展，同时也说明了面向过程的代码重用性低、扩展能力差。
+</code></pre>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/22/Design-pattern/" data-id="ckmkaeves0000eww3by2jhyvu" data-title="Design-pattern" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/19/Erlang/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Erlang</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/22/Design-pattern/">Design-pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/Erlang/">Erlang</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/idea/">idea</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/Hexo/">Hexo</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 ff<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
