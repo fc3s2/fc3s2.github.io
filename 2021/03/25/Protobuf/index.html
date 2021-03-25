@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Protobuf | ff&#39;s learn book</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Protocol Buffer 历史 序列化 proto教程 例子        历史 2001年初，Protobuf首先在Google内部创建， 我们把它称之为 proto1，一直以来在Google的内部使用，其中也不断的演化，根据使用者的需求也添加很多新的功能，一些内部库依赖它。几乎每个Google的开发者都会使用到它。  Google开始开源它的内部项目时，因为依赖的关系，所以他们决定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Protobuf">
+<meta property="og:url" content="http://example.com/2021/03/25/Protobuf/index.html">
+<meta property="og:site_name" content="ff&#39;s learn book">
+<meta property="og:description" content="Protocol Buffer 历史 序列化 proto教程 例子        历史 2001年初，Protobuf首先在Google内部创建， 我们把它称之为 proto1，一直以来在Google的内部使用，其中也不断的演化，根据使用者的需求也添加很多新的功能，一些内部库依赖它。几乎每个Google的开发者都会使用到它。  Google开始开源它的内部项目时，因为依赖的关系，所以他们决定">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-25T07:00:13.000Z">
+<meta property="article:modified_time" content="2021-03-25T07:57:03.202Z">
+<meta property="article:author" content="ff">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="ff's learn book" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">ff&#39;s learn book</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Protobuf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/25/Protobuf/" class="article-date">
+  <time class="dt-published" datetime="2021-03-25T07:00:13.000Z" itemprop="datePublished">2021-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Protobuf
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <!-- toc -->
+
+<ul>
+<li><a href="#protocol-bufferhttpsdevelopersgooglecomprotocol-buffers"><strong>Protocol Buffer</strong></a><ul>
+<li><a href="#%E5%8E%86%E5%8F%B2">历史</a></li>
+<li><a href="#%E5%BA%8F%E5%88%97%E5%8C%96">序列化</a></li>
+<li><a href="#proto%E6%95%99%E7%A8%8B">proto教程</a><ul>
+<li><a href="#%E4%BE%8B%E5%AD%90">例子</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<!-- tocstop -->
+
+<h1><span id="protocol-buffer"></span></h1><h2><span id="历史">历史</span></h2><blockquote>
+<p>2001年初，Protobuf首先在Google内部创建， 我们把它称之为 proto1，一直以来在Google的内部使用，其中也不断的演化，根据使用者的需求也添加很多新的功能，一些内部库依赖它。几乎每个Google的开发者都会使用到它。</p>
+</blockquote>
+<p>Google开始开源它的内部项目时，因为依赖的关系，所以他们决定首先把Protobuf开源出去。 proto1在演化的过程中有些混乱，所以Protobuf的开发者重写了Protobuf的实现，保留了proto1的大部分设计，以及proto1的很多的想法。但是开源的proto2不依赖任何的Google的库，代码也相当的清晰。2008年7月7日，Protobuf开始公布出来。</p>
+<p>Protobuf公布出来也得到了大家的广泛的关注， 逐步地也得到了大家的认可，很多项目也采用Protobuf进行消息的通讯，还有基于Protobuf的微服务框架GRPC。在使用的过程中，大家也提出了很多的意见和建议，Protobuf也在演化，于2016年推出了Proto3。 Proto3简化了proto2的开发，提高了开发的效能，但是也带来了版本不兼容的问题。</p>
+<p>目前Protobuf的稳定版本是3.9.2，于2019年9月23日发布。由于很多公司很早的就采用了Protobuf，所以很多项目还在使用proto2协议，目前是proto2和proto3同时在使用的状态。</p>
+<p>Protocol Buffer名称来自于初期一个主要的类的名称 <strong>ProtocolBuffer</strong>。</p>
+<p>Google当前并没有Protobuf的相关专利，所以不必担心侵权的问题。</p>
+<hr>
+<h2><span id="序列化">序列化</span></h2><blockquote>
+<p>序列化(serialization、marshalling)的过程是指将数据结构或者对象的状态转换成可以存储(比如文件、内存)或者传输的格式(比如网络)。反向操作就是反序列化(deserialization、unmarshalling)的过程。</p>
+</blockquote>
+<p>1987年曾经的Sun Microsystems发布了XDR。</p>
+<p>二十世纪九十年代后期，XML开始流行，它是一种人类易读的基于文本的编码方式，易于阅读和理解，但是失去了紧凑的基于字节流的编码的优势。</p>
+<p>JSON是一种更轻量级的基于文本的编码方式，经常用在client/server端的通讯中。</p>
+<p>YAML类似JSON，新的特性更强大，更适合人类阅读，也更紧凑。</p>
+<p>还有苹果系统的property list。</p>
+<p>除了上面这些和Protobuf，还有许许多多的序列化格式，比如Thrift、Avro、BSON、CBOR、MessagePack, 还有很多非跨语言的编码格式。项目gosercomp对比了各种go的序列化库，包括序列化和反序列的性能，以及序列化后的数据大小。总体来说Protobuf序列化和反序列的性能都是比较高的，编码后的数据大小也不错。</p>
+<p>Protobuf支持很多语言，比如C++、C#、Dart、Go、Java、Python、Rust等，同时也是跨平台的，所以得到了广泛的应用。</p>
+<p>Protobuf包含序列化格式的定义、各种语言的库以及一个IDL编译器。正常情况下你需要定义proto文件，然后使用IDL编译器编译成你需要的语言。</p>
+<hr>
+<h2><span id="proto教程">proto教程</span></h2><blockquote>
+<p>鉴于官方推荐新代码采用proto3,这个教程主要介绍proto3的开发.官方建议新项目采用proto3，老项目因为兼容性的问题继续使用proto2,并且会长时间的支持proto2。</p>
+</blockquote>
+<h3><span id="例子">例子</span></h3><pre><code>syntax =&quot;proto3&quot;;
+
+message SearchRequest &#123;
+string query = 1;
+int32 page_number = 2;
+int32 result_per_page = 3;
+&#125;
+</code></pre>
+<p>第一行指定<strong>protobuf</strong>的版本，这里是以proto3格式定义。<br>你还可以指定为proto2.如果没有指定，默认以<strong>proto2</strong>格式定义。<br>它定义了一个message类型：SearchRequest,它包含三个字段 query、page_number、result_per_page，它会被<strong>protoc</strong>编译成不同的编程语言的相应对象，比如Jave中的class、Go中的struct、<strong>Erlang中的record</strong></p>
+<blockquote>
+<p>字段是以[ “repeated” ] type fieldName “=” fieldNumber [ “[“ fieldOptions “]” ] “;”格式定义的。<br>这个例子是一个简单的例子，采用了type fieldName “=” fieldNumber格式定义的。<br>比如第一个字段query, 首先是它的类型string，其次是字段的名称，然后是等号=, 之后是字段的序号，然后是分号。<br>复杂的结构，前面可以定义为repeated, 序号之后可以定义一些可选项。<br>这是普通的字段定义，当然还有一些复杂的一些字段定义，比如Oneof、Map、Reserved、enum定义，下一节我们再详细讲。</p>
+</blockquote>
+<h4><span id="引入其他proto文件">引入其他proto文件</span></h4><pre><code>import  &quot;other.proto&quot;;
+import public &quot;other2.proto&quot;;
+import weak &quot;other.proto&quot;;
+</code></pre>
+<blockquote>
+<p>比较少使用的是public和weak关键字。默认情况下weak引入的文件允许不存在(missing)，只为了google内部使用。public具有传递性，如果你在文件中通过public引入第三方的proto文件，那么引入你这个文件同时也会引入第三方的proto。<br>我们一般忽略public和weak关键字，这两个关键字也没有在规范中详细进行介绍。</p>
+</blockquote>
+<h4><span id="package">package</span></h4><p>定义proto的包名，包名可以避免对message 类型之间的名字冲突，同名的Message可以通过package进行区分。</p>
+<p>在没有为特定语言定义option xxx_package的时候，它还可以用来生成特定语言的包名，比如Java package, go package。</p>
+<pre><code>package foo.bar;
+</code></pre>
+<h4><span id="option">option</span></h4><p>option可以用在proto的scope中，或者message、enum、service的定义中。<br>可以是Protobuf定义的option，或者自定义的option。</p>
+<p>option的定义格式是”option” optionName “=” constant “;”,比如:    </p>
+<pre><code>option java_package = &quot;com.example.foo&quot;;
+</code></pre>
+<p>一些Protobuf定义的option:</p>
+<ul>
+<li>java_package</li>
+<li>java_multiple_files</li>
+<li>java_outer_classname</li>
+<li>optimize_for</li>
+<li>cc_enable_arenas</li>
+<li>objc_class_prefix</li>
+<li>deprecated</li>
+<li>自定义的例子：<pre><code>  option (gogoproto.testgen_all) = true;
+  option (gogoproto.populate_all) = true;
+  option (gogoproto.benchgen_all) = true;
+  message NidRepPackedNative &#123;
+      repeated double Field1 = 1 [(gogoproto.nullable) = false, packed = true];
+      repeated float Field2 = 2 [(gogoproto.nullable) = false, packed = true];
+      repeated int32 Field3 = 3 [(gogoproto.nullable) = false, packed = true];
+      &#125;       
+</code></pre>
+</li>
+</ul>
+<h4><span id="普通字段">普通字段</span></h4><p>前面讲过，普通字段的格式为field = [ “repeated” ] type fieldName “=” fieldNumber [ “[“ fieldOptions “]” ] “;”</p>
+<blockquote>
+<p>repeated允许字段重复，对于Go语言来说，它会编译成数组(slice of type)类型的格式。</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://colobu.com/2019/10/03/protobuf-ultimate-tutorial-in-go/#%E5%BA%8F%E5%88%97%E5%8C%96">https://colobu.com/2019/10/03/protobuf-ultimate-tutorial-in-go/#%E5%BA%8F%E5%88%97%E5%8C%96</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/03/25/Protobuf/" data-id="ckmol1tr1000260w352gr4fln" data-title="Protobuf" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/22/Design-pattern/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Design-pattern</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/25/Protobuf/">Protobuf</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/22/Design-pattern/">Design-pattern</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/Erlang/">Erlang</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/idea/">idea</a>
+          </li>
+        
+          <li>
+            <a href="/2021/03/19/Hexo/">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 ff<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
